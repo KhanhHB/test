@@ -15,10 +15,10 @@
         </label>
     </div>
     <ion-list>
-       <ion-item ng-repeat="pet in pets" type="item-text-wrap"
-       href="#menu/general/1">
-        <h3>{{pet.title}}</h3>
-        <p>{{pet.description}}</p>
+       <ion-item ng-repeat="job in pets" type="item-text-wrap"
+       href="#menu/general/{{job.id}}">
+            <h3>{{job.title}}</h3>
+            <p>{{job.description}} {{job.id}}</p>
       </ion-item>
       
     </ion-list>

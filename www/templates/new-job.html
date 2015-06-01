@@ -1,0 +1,31 @@
+<ion-view title="New transaction">
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+        <a class="bkk-link button-icon icon  ion-ios7-arrow-back" href="#home"></a>
+    </ion-nav-bar>
+    <ion-content padding="true" class="has-header">
+    <form name="jobCreationForm">
+      <div class="list list-inset"> 
+
+        <div class="item item-divider">Title</div>
+          <label class="item item-input item-stacked-label">
+            <input id="title" type="text" placeholder="Name"
+                name="title" ng-model="title" required>
+          </label>
+
+        <div class="item item-divider">Job basic details</div>
+        <label class="item item-input item-stacked-label">
+            <textarea id="desc" placeholder="Description" name="desc" rows="8" cols="10"
+              ng-model="job.description" required></textarea>
+        </label> 
+
+        <div class="item item-divider">Tenant address</div>
+        <label class="item item-input item-stacked-label">
+          <input id="location" type="text" placeholder="Tenant address" ng-model="job.location" required>
+        </label>
+
+       <button class="button button-energized button-block"
+         ng-click="createJob()">Create</button>
+     </div>
+     </form>
+    </ion-content>
+</ion-view>

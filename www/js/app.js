@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
+    angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
 
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -25,12 +25,13 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
 
     // the pet tab has its own child nav-view and history
     .state('tab.pet-index', {
-      url: '/pets',
-      views: {
-        'pets-tab': {
-          templateUrl: 'templates/pet-index.html',
-          controller: 'PetIndexCtrl'
-        }
+       cache: false,
+       url: '/jobs',
+       views: {
+        'jobs-tab': {
+          templateUrl: 'templates/job-index.html',
+          controller: 'JobIndexCtrl'
+       }
       }
     })
 
@@ -48,7 +49,8 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
       url: '/adopt',
       views: {
         'adopt-tab': {
-          templateUrl: 'templates/adopt.html'
+          templateUrl: 'templates/job-index.html',
+          controller: 'PetIndexCtrl'
         }
       }
     })
@@ -57,13 +59,82 @@ angular.module('starter', ['ionic', 'starter.services', 'starter.controllers'])
       url: '/about',
       views: {
         'about-tab': {
-          templateUrl: 'templates/about.html'
+          templateUrl: 'templates/job-index.html',
+          controller: 'PetIndexCtrl'
         }
       }
+    })
+    
+    .state('home', {
+      url: '/home',
+      templateUrl: 'templates/home.html',
+    })
+
+    .state('menu', {
+        url: '/menu',
+        abstract: true,
+        templateUrl: 'templates/menu.html',
+    })
+
+    .state('menu.general', {
+      url: '/general/:jobId',
+      views: {
+        'menuContent' : {
+          templateUrl: "templates/general.html",
+          controller: 'PetDetailCtrl'
+        }
+      }
+    })
+
+    .state('menu.quote', {
+      url: '/quote/:jobId',
+        views: {
+            'menuContent' : {
+                templateUrl: "templates/quote.html",
+                controller: 'PetDetailCtrl'
+            }    
+        }
+    })
+
+    .state('menu.report', {
+      url: '/report/:jobId',
+        views: {
+            'menuContent' : {
+                templateUrl: "templates/report.html",
+                controller: 'PetDetailCtrl'
+            }
+        }
+    })
+
+   .state('menu.about', {
+     url: '/pets/:petId',
+     views: {
+      'menuContent' : {
+        templateUrl: "templates/pet-detail.html",
+        controller: 'PetDetailCtrl'
+      }
+     }
+    })
+
+    .state('new-job', {
+        url: '/new-job',
+        templateUrl: 'templates/new-job.html',
+        controller: 'JobCreationCtrl'
+    })
+
+    .state('new-quote', {
+      url: '/new-quote/:jobId',
+      templateUrl: "templateUrl/quote.html",
+    })
+
+    .state('login', {
+        url: '/login',
+        templateUrl: 'templates/login.html',
+        controller: 'LoginCtrl'
     });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/pets');
-
+  $urlRouterProvider.otherwise('home');
 });
+
 
